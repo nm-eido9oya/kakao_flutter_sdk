@@ -42,8 +42,8 @@ class RequiredScopesInterceptor extends Interceptor {
       }
 
       try {
-        _dio.lock();
-        _dio.interceptors.errorLock.lock();
+        // _dio.lock();
+        // _dio.interceptors.errorLock.lock();
 
         // get additional consents
         final authCode = await _authCodeClient.authorizeWithNewScopes(
@@ -54,8 +54,8 @@ class RequiredScopesInterceptor extends Interceptor {
         options.headers[CommonConstants.authorization] =
             "${CommonConstants.bearer} ${token.accessToken}";
 
-        _dio.unlock();
-        _dio.interceptors.errorLock.unlock();
+        // _dio.unlock();
+        // _dio.interceptors.errorLock.unlock();
 
         // after getting additional consents, retry api call
         var response = await _dio.fetch(options);
@@ -67,8 +67,8 @@ class RequiredScopesInterceptor extends Interceptor {
           handler.next(err);
         }
       } finally {
-        _dio.unlock();
-        _dio.interceptors.errorLock.unlock();
+        // _dio.unlock();
+        // _dio.interceptors.errorLock.unlock();
       }
     } else {
       handler.next(err);
