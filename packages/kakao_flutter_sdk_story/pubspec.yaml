@@ -19,7 +19,10 @@ dependencies:
   json_annotation: ^4.5.0
   dio: ^5.1.1
   kakao_flutter_sdk_user:
-    path: ../kakao_flutter_sdk_user
+    git:
+      url: https://github.com/nm-eido9oya/kakao_flutter_sdk.git
+      ref: develop
+      path: packages/kakao_flutter_sdk_user
 
 dev_dependencies:
   flutter_test:
